@@ -58,15 +58,21 @@ function HistoryCalculation() {
             .map((item, index) => (
               <div
                 key={index}
-                className="flex flex-col gap-y-2 text-center border border-violet-300 px-10 py-4"
+                className="flex flex-col gap-y-2 text-center border border-[color:var(--color-violet-300)] px-8 py-4 w-full max-w-lg mx-auto"
               >
-                <div className="flex justify-between">
-                  <h2 className="uppercase">{item.name.replace("-", " ")}</h2>
-                  <button
-                    onClick={() => handleDelete(item.inputValues, item.result)}
-                  >
-                    <TrashIcon className="size-6" />
-                  </button>
+                <div className="flex justify-between items-center mb-2">
+                  <h2 className="uppercase text-lg flex-grow text-center">
+                    {item.name.replaceAll("-", " ")}
+                  </h2>
+                  <div className="flex-shrink-0">
+                    <button
+                      onClick={() =>
+                        handleDelete(item.inputValues, item.result)
+                      }
+                    >
+                      <TrashIcon className="h-6 w-6" />
+                    </button>
+                  </div>
                 </div>
 
                 {item.values.map((label, labelIndex) => (
@@ -74,19 +80,25 @@ function HistoryCalculation() {
                     <p>{label}</p>
                     <input
                       type="text"
-                      value={item.inputValues[labelIndex]}
-                      className="w-full text-center border border-violet-300"
+                      value={
+                        item.inputValues[labelIndex]
+                          ? item.inputValues[labelIndex]
+                          : item.result
+                      }
+                      className={`w-full text-center border border-[color:var(--color-violet-300)] ${
+                        item.inputValues[labelIndex] === "" ? "font-bold" : ""
+                      }`}
                       readOnly
                     />
                   </div>
                 ))}
 
                 <p className="font-bold">Result</p>
-                <div className="flex">
+                <div className="flex justify-center mt-2">
                   <input
                     type="text"
                     value={item.result}
-                    className="text-center font-bold border border-violet-300"
+                    className="text-center font-bold border border-[color:var(--color-violet-300)] w-full max-w-xs"
                     readOnly
                   />
 
@@ -97,7 +109,7 @@ function HistoryCalculation() {
                       toast.success("Copied to clipboard!");
                     }}
                   >
-                    <ClipboardIcon className="size-6" />
+                    <ClipboardIcon className="h-6 w-6" />
                   </button>
                 </div>
               </div>

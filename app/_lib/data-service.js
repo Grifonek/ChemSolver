@@ -101,6 +101,16 @@ export async function getUser(email) {
   return data;
 }
 
+export async function getUserId(id) {
+  const { data, error } = await supabase
+    .from("users")
+    .select("*")
+    .eq("id", id)
+    .single();
+
+  return data;
+}
+
 export async function createUser(newUser) {
   const { data, error } = await supabase
     .from("users")

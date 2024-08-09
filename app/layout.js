@@ -1,10 +1,9 @@
 import Header from "@/app/_components/Header";
 
-import { Inter, Roboto_Mono } from "next/font/google";
+import { Roboto_Mono } from "next/font/google";
 import "@/app/_styles/globals.css";
 import { Toaster } from "react-hot-toast";
 
-const inter = Inter({ subsets: ["latin"] });
 const roboto_mono = Roboto_Mono({ subsets: ["latin"] });
 
 export const metadata = {

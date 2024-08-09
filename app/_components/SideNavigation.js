@@ -1,5 +1,9 @@
 import Link from "next/link";
-import { BookmarkIcon, ArrowPathIcon } from "@heroicons/react/24/outline";
+import {
+  BookmarkIcon,
+  ArrowPathIcon,
+  ChatBubbleLeftRightIcon,
+} from "@heroicons/react/24/outline";
 import SignOutButton from "./SignOutButton";
 
 function SideNavigation() {
@@ -22,6 +26,15 @@ function SideNavigation() {
           >
             <ArrowPathIcon className="size-6" />
             History
+          </Link>
+        </li>
+        <li className="hover:bg-violet-400 transition-all font-semibold border-r border-r-violet-300">
+          <Link
+            href="/account/discussion"
+            className="flex items-center gap-4 py-6 px-5 h-full w-full"
+          >
+            <ChatBubbleLeftRightIcon className="size-6" />
+            Discussion
           </Link>
         </li>
         <li className="hover:bg-violet-400 transition-all font-semibold border-r border-r-violet-300">

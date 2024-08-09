@@ -101,7 +101,8 @@ export async function getBookMarked() {
 
 export async function addToHistory(id, values, inputValues, result) {
   const session = await auth();
-  if (!session) throw new Error("You must be logged in");
+  if (!session) return;
+  // if (!session) throw new Error("You must be logged in");
 
   const { data, error } = await supabase
     .from("history")
@@ -211,4 +212,147 @@ export async function deleteOldHistory() {
     .from("history")
     .delete()
     .eq("created_at", "someValue");
+
+  if (error) {
+    console.error(error);
+    throw new Error("Could not delete all history");
+  }
+}
+
+// get all messages
+
+export async function getMessages() {
+  const session = await auth();
+  if (!session) throw new Error("You must be logged in");
+
+  // const { name, email, image } = session.user;
+
+  const { data, error } = await supabase.from("messages").select("*");
+
+  if (error) {
+    console.error(error);
+    throw new Error("Could not get all messages");
+  }
+
+  return data;
+}
+
+// create message
+
+export async function createMessage(heading, text) {
+  const session = await auth();
+  if (!session) throw new Error("You must be logged in");
+
+  const { data, error } = await supabase
+    .from("messages")
+    .insert([
+      {
+        heading: heading,
+        text: text,
+        userId: session.user.guestId,
+        userName: session.user.name,
+        userEmail: session.user.email,
+        userImg: session.user.image,
+      },
+    ])
+    .select();
+
+  if (error) {
+    console.error(error);
+    throw new Error("Could not create new message");
+  }
+
+  return data;
+}
+
+// edit message
+export async function updateMessage(heading, text, messageId) {
+  const session = await auth();
+  if (!session) throw new Error("You must be logged in");
+
+  const { data, error } = await supabase
+    .from("messages")
+    .update({ heading: heading, text: text })
+    .eq("userId", session.user.guestId)
+    .eq("id", messageId)
+    .select();
+
+  if (error) {
+    console.error(error);
+    throw new Error("Could not update message");
+  }
+
+  return data;
+}
+
+// delete message
+export async function deleteMessage(messageId) {
+  const session = await auth();
+  if (!session) throw new Error("You must be logged in");
+
+  const { error: replyError } = await supabase
+    .from("replies")
+    .delete()
+    .eq("messageId", messageId);
+
+  const { error } = await supabase
+    .from("messages")
+    .delete()
+    .eq("id", messageId)
+    .eq("userId", session.user.guestId);
+
+  if (error || replyError) {
+    console.error(error);
+    throw new Error("Could not delete message");
+  }
+
+  revalidatePath("/account/discussion");
+}
+
+// filter for getting only my messages
+
+// create reply message
+
+export async function createReply(idOfMessage, text) {
+  const session = await auth();
+  if (!session) throw new Error("You must be logged in");
+
+  const { data, error } = await supabase
+    .from("replies")
+    .insert([
+      {
+        text: text,
+        messageId: idOfMessage,
+        userId: session.user.guestId,
+        userName: session.user.name,
+        userEmail: session.user.email,
+        userImg: session.user.image,
+      },
+    ])
+    .select();
+
+  if (error) {
+    console.error(error);
+    throw new Error("Could not reply to message");
+  }
+
+  // revalidatePath("/account/discussion");
+
+  return data;
+}
+
+// get replies
+
+export async function getReplies() {
+  const session = await auth();
+  if (!session) throw new Error("You must be logged in");
+
+  const { data, error } = await supabase.from("replies").select("*");
+
+  if (error) {
+    console.error(error);
+    throw new Error("Could not get all replies");
+  }
+
+  return data;
 }
