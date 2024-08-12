@@ -1,8 +1,8 @@
 import { PencilSquareIcon } from "@heroicons/react/24/outline";
 
-function EditMessage() {
+function EditMessage({ setIsOpen }) {
   return (
-    <button className="flex">
+    <button className="flex" onClick={() => setIsOpen(true)}>
       <PencilSquareIcon className="size-6" />
       Edit
     </button>

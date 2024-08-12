@@ -69,7 +69,7 @@ function ModalCreateMessage({ onNewMessage, isOpen, onClose }) {
               setText("");
               onClose();
             }}
-            className="bg-[color:var(--color-green-300)] hover:bg-[color:var(--color-green-400)] text-white px-4 py-2 rounded-lg transition-all"
+            className="bg-[color:var(--color-green-300)] hover:bg-[color:var(--color-green-400)] px-4 py-2 rounded-lg transition-all"
           >
             Submit
           </button>

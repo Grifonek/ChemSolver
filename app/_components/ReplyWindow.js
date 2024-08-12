@@ -1,12 +1,20 @@
 import { useState } from "react";
 import { createReply } from "../_lib/actions";
 import toast from "react-hot-toast";
+import ModalConfirm from "./ModalConfirm";
 
 function ReplyWindow({ id, userName, isOpen, onClose, onReply }) {
   const [text, setText] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   async function handleSend() {
+    setIsModalOpen(false);
     try {
+      if (!text) {
+        toast.error("Reply can't be empty");
+        return;
+      }
+
       const [reply] = await createReply(id, text);
 
       if (reply) {
@@ -49,14 +57,25 @@ function ReplyWindow({ id, userName, isOpen, onClose, onReply }) {
         </button>
         <button
           onClick={() => {
-            handleSend();
-            setText("");
-            onClose();
+            setIsModalOpen(true);
           }}
-          className="bg-[color:var(--color-green-300)] hover:bg-[color:var(--color-green-400)] text-white px-4 py-2 rounded-lg transition-all"
+          className="bg-[color:var(--color-green-300)] hover:bg-[color:var(--color-green-400)] px-4 py-2 rounded-lg transition-all"
         >
           Send
         </button>
+
+        {isModalOpen && (
+          <ModalConfirm
+            message={`Reply to ${userName}?`}
+            buttonText={"Reply"}
+            onConfirm={() => {
+              handleSend();
+              setText("");
+              onClose();
+            }}
+            onCancel={() => setIsModalOpen(false)}
+          />
+        )}
       </div>
     </div>
   );

@@ -282,6 +282,8 @@ export async function updateMessage(heading, text, messageId) {
     throw new Error("Could not update message");
   }
 
+  revalidatePath("/account/discussion");
+
   return data;
 }
 
@@ -289,6 +291,11 @@ export async function updateMessage(heading, text, messageId) {
 export async function deleteMessage(messageId) {
   const session = await auth();
   if (!session) throw new Error("You must be logged in");
+
+  const { error: likesError } = await supabase
+    .from("messageLikes")
+    .delete()
+    .eq("messageId", messageId);
 
   const { error: replyError } = await supabase
     .from("replies")
@@ -355,4 +362,60 @@ export async function getReplies() {
   }
 
   return data;
+}
+
+// give like
+
+export async function addLike(messageId) {
+  const session = await auth();
+  if (!session) throw new Error("You must be logged in");
+
+  const userId = session.user.guestId;
+
+  const { data: existingLike, error: likeCheckError } = await supabase
+    .from("messageLikes")
+    .select("*")
+    .eq("userId", userId)
+    .eq("messageId", messageId)
+    .single();
+
+  if (existingLike) {
+    throw new Error("You have already liked this message");
+  }
+
+  const { data: message, error: fetchError } = await supabase
+    .from("messages")
+    .select("likes")
+    .eq("id", messageId)
+    .single();
+
+  if (fetchError) {
+    throw new Error("Could not fetch message");
+  }
+
+  const updatedLikes = message.likes + 1;
+
+  const { data: updatedMessage, error: updateError } = await supabase
+    .from("messages")
+    .update({ likes: updatedLikes }) // increment likes
+    .eq("id", messageId)
+    .select();
+
+  if (updateError) {
+    console.error(updateError);
+    throw new Error("Could not add like to message");
+  }
+
+  const { data: likeData, error: likeInsertError } = await supabase
+    .from("messageLikes")
+    .insert([{ userId: userId, messageId: messageId }]);
+
+  if (likeInsertError) {
+    console.error(likeInsertError);
+    throw new Error("Could not record the like");
+  }
+
+  console.log("database passed");
+
+  return updatedMessage;
 }
