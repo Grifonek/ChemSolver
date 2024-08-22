@@ -262,6 +262,8 @@ export async function createMessage(heading, text) {
     throw new Error("Could not create new message");
   }
 
+  revalidatePath("/account/discussion");
+
   return data;
 }
 
@@ -316,10 +318,7 @@ export async function deleteMessage(messageId) {
   revalidatePath("/account/discussion");
 }
 
-// filter for getting only my messages
-
 // create reply message
-
 export async function createReply(idOfMessage, text) {
   const session = await auth();
   if (!session) throw new Error("You must be logged in");
@@ -418,4 +417,45 @@ export async function addLike(messageId) {
   console.log("database passed");
 
   return updatedMessage;
+}
+
+// edit reply
+export async function updateReply(text, replyId) {
+  const session = await auth();
+  if (!session) throw new Error("You must be logged in");
+
+  const { data, error } = await supabase
+    .from("replies")
+    .update({ text: text })
+    .eq("userId", session.user.guestId)
+    .eq("id", replyId)
+    .select();
+
+  if (error) {
+    console.error(error);
+    throw new Error("Could not update reply message");
+  }
+
+  revalidatePath("/account/discussion");
+
+  return data;
+}
+
+// delete reply
+export async function deleteReply(replyId) {
+  const session = await auth();
+  if (!session) throw new Error("You must be logged in");
+
+  const { error } = await supabase
+    .from("replies")
+    .delete()
+    .eq("id", replyId)
+    .eq("userId", session.user.guestId);
+
+  if (error) {
+    console.error(error);
+    throw new Error("Could not delete reply");
+  }
+
+  revalidatePath("/account/discussion");
 }

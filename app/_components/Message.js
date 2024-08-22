@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { addLike, deleteMessage, updateMessage } from "../_lib/actions";
 import DeleteMessage from "./DeleteMessage";
 import EditMessage from "./EditMessage";
 import ReplyButton from "./ReplyButton";
 import ReplyMessage from "./ReplyMessage";
-import { HeartIcon } from "@heroicons/react/24/outline";
+import { HeartIcon, Bars3Icon } from "@heroicons/react/24/outline";
 import toast from "react-hot-toast";
 import EditWindow from "./EditWindow";
 import ModalConfirm from "./ModalConfirm";
@@ -28,6 +28,9 @@ function Message({
   const [newHeading, setNewHeading] = useState(heading);
   const [newText, setNewText] = useState(text);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const dropdownRef = useRef(null);
 
   async function handleDelete() {
     setIsModalOpen(false);
@@ -41,9 +44,17 @@ function Message({
 
   async function handleUpdate() {
     try {
+      if (newHeading === heading && newText === text) {
+        toast.error("No changes detected");
+        return;
+      } else if (newHeading === "" || newText === "") {
+        toast.error("Message can't be empty");
+        return;
+      }
+
       await updateMessage(newHeading, newText, id);
       toast.success("Message successfully edited");
-      setIsOpen(false); // Close the EditWindow after update
+      setIsOpen(false);
     } catch {
       toast.error("Could not edit message");
     }
@@ -60,24 +71,43 @@ function Message({
     }
   }
 
+  useEffect(() => {
+    function handleOutsideClick(e) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setIsDropdownOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, []);
+
   return (
     <div className="relative flex flex-col items-center border border-blue-500 m-4 space-y-4 py-3">
       {currentUserId === userId && (
-        <div className="absolute top-0 right-0 flex flex-col gap-x-4 gap-y-2 p-2">
-          <DeleteMessage
-            setIsModalOpen={setIsModalOpen}
-            handleDelete={handleDelete}
+        <div className="absolute top-2 right-6" ref={dropdownRef}>
+          <Bars3Icon
+            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+            className="p-2 cursor-pointer"
           />
-          <EditMessage setIsOpen={setIsOpen} />
-          {isOpen && (
-            <EditWindow
-              newHeading={newHeading}
-              setNewHeading={setNewHeading}
-              newText={newText}
-              setNewText={setNewText}
-              handleUpdate={handleUpdate}
-              setIsOpen={setIsOpen}
-            />
+          {isDropdownOpen && (
+            <div className="absolute right-0 border rounded-lg shadow-lg z-50 px-2 py-1 space-y-2">
+              <EditMessage setIsOpen={setIsOpen} />
+              <DeleteMessage setIsModalOpen={setIsModalOpen} />
+              {isOpen && (
+                <EditWindow
+                  newHeading={newHeading}
+                  setNewHeading={setNewHeading}
+                  newText={newText}
+                  setNewText={setNewText}
+                  handleUpdate={handleUpdate}
+                  setIsOpen={setIsOpen}
+                />
+              )}
+            </div>
           )}
         </div>
       )}
@@ -91,22 +121,23 @@ function Message({
         />
       )}
 
-      <div className="flex gap-x-8 items-center">
+      <div className="flex gap-x-8 items-center pb-4">
         <img
           src={userImg}
-          alt={`Image of user ${userName}`}
+          // src={userImg ? userImg : ""}
+          alt="user"
+          referrerPolicy="no-referrer"
           className="w-10 h-10 rounded-full"
         />
         <div className="flex items-center gap-x-4">
-          <p>{userName}</p>
-          <h2>({userEmail})</h2>
-          <button onClick={handleLikes} className="flex items-center">
+          <p className="font-bold">{userName}:</p>
+          <h2 className="text-gray-500">{userEmail}</h2>
+          <button onClick={handleLikes} className="flex items-center gap-1">
             <HeartIcon className="h-6 w-6" />
             <span>{likeNum}</span>
           </button>
         </div>
       </div>
-      <p>{id}</p>
       <h2 className="text-lg uppercase font-bold">{heading}</h2>
       <p>{text}</p>
 
@@ -114,7 +145,12 @@ function Message({
 
       <div className="mt-4 space-y-4 w-full">
         {replies.map((reply) => (
-          <ReplyMessage key={reply.id} reply={reply} />
+          <ReplyMessage
+            key={reply.id}
+            reply={reply}
+            currentUserId={currentUserId}
+            userId={reply.userId}
+          />
         ))}
       </div>
     </div>

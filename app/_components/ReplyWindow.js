@@ -10,17 +10,12 @@ function ReplyWindow({ id, userName, isOpen, onClose, onReply }) {
   async function handleSend() {
     setIsModalOpen(false);
     try {
-      if (!text) {
-        toast.error("Reply can't be empty");
-        return;
-      }
-
       const [reply] = await createReply(id, text);
 
       if (reply) {
         toast.success(`You replied to ${userName}`);
         if (onReply) {
-          onReply(reply); // Add the new reply to the parent's state
+          onReply(reply);
         }
       }
     } catch (error) {
@@ -57,7 +52,9 @@ function ReplyWindow({ id, userName, isOpen, onClose, onReply }) {
         </button>
         <button
           onClick={() => {
-            setIsModalOpen(true);
+            text !== ""
+              ? setIsModalOpen(true)
+              : toast.error("Reply can't be empty");
           }}
           className="bg-[color:var(--color-green-300)] hover:bg-[color:var(--color-green-400)] px-4 py-2 rounded-lg transition-all"
         >

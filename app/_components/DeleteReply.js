@@ -1,6 +1,6 @@
 import { TrashIcon } from "@heroicons/react/24/outline";
 
-function DeleteMessage({ setIsModalOpen }) {
+function DeleteReply({ setIsModalOpen }) {
   return (
     <button
       className="flex hover:font-bold"
@@ -14,4 +14,4 @@ function DeleteMessage({ setIsModalOpen }) {
   );
 }
 
-export default DeleteMessage;
+export default DeleteReply;

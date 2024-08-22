@@ -11,6 +11,9 @@ export const metadata = {
     template: "%s | ChemSolver",
     default: "Welcome | ChemSolver",
   },
+  icons: {
+    icon: "/logo.png",
+  },
   description: "Your online tool to help you with chemistry.",
 };
 

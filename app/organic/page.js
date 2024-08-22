@@ -1,3 +1,7 @@
+export const metadata = {
+  title: "Organic chemistry",
+};
+
 export default function Page() {
   return (
     <div className="flex flex-col items-center px-4">

@@ -1,16 +1,17 @@
 import Link from "next/link";
 import { UserCircleIcon } from "@heroicons/react/24/outline";
 import ToggleDarkMode from "./ToggleDarkMode";
+import Logo from "./Logo";
 
 function Header() {
   return (
     <header className="bg-[color:var(--color-violet-300)] font-semibold">
       <div className="flex justify-between items-center">
         <Link href="/" className="ml-4">
-          Logo
+          <Logo />
         </Link>
         <div className="flex items-center">
-          <ul className="flex space-x-6 items-center">
+          <ul className="flex space-x-3 items-center">
             <li className="hover:bg-[color:var(--color-violet-400)] py-2 px-2 transition-all">
               <Link href="/anorganic">Anorganic chemistry</Link>
             </li>
@@ -19,6 +20,15 @@ function Header() {
             </li>
             <li className="hover:hover:bg-[color:var(--color-violet-400)] py-2 px-2 transition-all">
               <Link href="/physical">Physical chemistry</Link>
+            </li>
+            <li className="hover:hover:bg-[color:var(--color-violet-400)] py-2 px-2 transition-all">
+              <Link href="/periodicTable">Periodic Table</Link>
+            </li>
+            <li className="hover:hover:bg-[color:var(--color-violet-400)] py-2 px-2 transition-all">
+              <Link href="/unitConverter">Unit converter</Link>
+            </li>
+            <li className="hover:hover:bg-[color:var(--color-violet-400)] py-2 px-2 transition-all">
+              <Link href="/equationBalancer">Equation Balancer</Link>
             </li>
             <li>
               <ToggleDarkMode />

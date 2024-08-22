@@ -49,17 +49,19 @@ function FavouriteCalculation() {
   }
 
   return (
-    <div className="grid grid-cols-2 gap-x-20">
+    <div>
       {bookmarked.length !== 0 ? (
-        bookmarked.map((item) => (
-          <div key={item.id}>
-            <GeneralCalculator
-              values={item.values}
-              id={item.name}
-              calculate={calculations[item.name.replaceAll("-", "")]}
-            />
-          </div>
-        ))
+        <div className="grid grid-cols-2 gap-x-20">
+          {bookmarked.map((item) => (
+            <div key={item.id}>
+              <GeneralCalculator
+                values={item.values}
+                id={item.name}
+                calculate={calculations[item.name.replaceAll("-", "")]}
+              />
+            </div>
+          ))}
+        </div>
       ) : (
         <p>No bookmarks found.</p>
       )}

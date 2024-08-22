@@ -4,10 +4,9 @@ import { useState } from "react";
 import Message from "./Message";
 
 function Messages({ messages, replies, currentUserId }) {
-  const [allReplies, setAllReplies] = useState(replies); // Initialize state with fetched replies
+  const [allReplies, setAllReplies] = useState(replies);
   const [currentMessages, setCurrentMessages] = useState(messages);
 
-  // Function to handle adding a new reply
   const handleNewReply = (newReply) => {
     setAllReplies((prevReplies) => [...prevReplies, newReply]);
   };
@@ -33,8 +32,8 @@ function Messages({ messages, replies, currentUserId }) {
           userName={message.userName}
           userEmail={message.userEmail}
           userImg={message.userImg}
-          replies={allReplies.filter((reply) => reply.messageId === message.id)} // Filter replies by message ID
-          onReply={handleNewReply} // Pass handleNewReply function
+          replies={allReplies.filter((reply) => reply.messageId === message.id)}
+          onReply={handleNewReply}
           onLike={handleLikeUpdate}
           currentUserId={currentUserId}
         />

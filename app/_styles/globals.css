@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+/* bg-[color:var(--color-violet-400)] */
+
 body {
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
@@ -13,6 +15,7 @@ html[data-bs-theme="dark"] body {
   --color-violet-300: #5b21b6;
   --color-violet-400: #6d28d9;
   --color-red: #dc2626;
+  --color-blue-300: #3b82f6;
   --color-green-300: #059669;
   --color-green-400: #10b981;
 }
@@ -24,6 +27,7 @@ html[data-bs-theme="light"] body {
   --color-violet-300: #c4b5fd;
   --color-violet-400: #a78bfa;
   --color-red: #f87171;
+  --color-blue-300: #60a5fa;
   --color-green-300: #34d399;
   --color-green-400: #10b981;
 }

@@ -10,6 +10,11 @@ function ModalCreateMessage({ onNewMessage, isOpen, onClose }) {
 
   async function handleSubmit(heading, text) {
     try {
+      if (heading === "" || text === "") {
+        toast.error("Message can't be empty");
+        return;
+      }
+
       const [newMessage] = await createMessage(heading, text);
 
       if (newMessage) {

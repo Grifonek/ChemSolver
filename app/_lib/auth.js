@@ -16,12 +16,14 @@ const authConfig = {
     async signIn({ user, account, profile }) {
       try {
         const existingUser = await getUser(user.email);
-        console.log(existingUser);
 
         if (!existingUser)
-          await createUser({ email: user.email, fullName: user.name });
+          await createUser({
+            email: user.email,
+            fullName: user.name,
+            image: user.image,
+          });
 
-        console.log(existingUser);
         return true;
       } catch {
         return false;
