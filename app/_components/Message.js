@@ -86,7 +86,7 @@ function Message({
   }, []);
 
   return (
-    <div className="relative flex flex-col items-center border border-blue-500 m-4 space-y-4 py-3">
+    <div className="relative flex flex-col items-center border-b border-[color:var(--color-gray-400)] m-4 space-y-4 py-3">
       {currentUserId === userId && (
         <div className="absolute top-2 right-6" ref={dropdownRef}>
           <Bars3Icon
@@ -125,7 +125,7 @@ function Message({
         <img
           src={userImg}
           // src={userImg ? userImg : ""}
-          alt="user"
+          // alt="user"
           referrerPolicy="no-referrer"
           className="w-10 h-10 rounded-full"
         />

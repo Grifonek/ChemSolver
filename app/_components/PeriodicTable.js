@@ -43,7 +43,6 @@ function PeriodicTable({ elements, filter, selectorComponent }) {
             </button>
           ))}
 
-          {/* Placeholder for the PeriodicSelector */}
           <div
             className="col-span-12 row-span-1 flex justify-center items-center"
             style={{ gridColumn: "2 / span 12", gridRow: "1" }}

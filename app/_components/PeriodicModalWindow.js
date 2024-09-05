@@ -85,15 +85,15 @@ function PeriodicModalWindow({ element, onModalClose }) {
           </p>
           <p>
             <span className="font-bold">Density: </span>
-            {element.density}
+            {element.density} kg/m<sup>3</sup>
           </p>
           <p>
             <span className="font-bold">Melting point: </span>
-            {element.meltingPoint}
+            {element.meltingPoint}˚C
           </p>
           <p>
             <span className="font-bold">Boiling point: </span>
-            {element.boilingPoint}
+            {element.boilingPoint}˚C
           </p>
           <p>
             <span className="font-bold">Electrons: </span>
@@ -150,7 +150,7 @@ function PeriodicModalWindow({ element, onModalClose }) {
           </p>
           <p>
             <span className="font-bold">Electrical conductivity: </span>
-            {element.electricalConductivity}
+            {element.electricalConductivity} MS/m
           </p>
           <p>
             <span className="font-bold">Resistivity: </span>

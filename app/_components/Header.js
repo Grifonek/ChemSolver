@@ -15,25 +15,22 @@ function Header() {
             <li className="hover:bg-[color:var(--color-violet-400)] py-2 px-2 transition-all">
               <Link href="/anorganic">Anorganic chemistry</Link>
             </li>
-            <li className="hover:hover:bg-[color:var(--color-violet-400)] py-2 px-2 transition-all">
-              <Link href="/organic">Organic chemistry</Link>
-            </li>
-            <li className="hover:hover:bg-[color:var(--color-violet-400)] py-2 px-2 transition-all">
+            <li className="hover:bg-[color:var(--color-violet-400)] py-2 px-2 transition-all">
               <Link href="/physical">Physical chemistry</Link>
             </li>
-            <li className="hover:hover:bg-[color:var(--color-violet-400)] py-2 px-2 transition-all">
+            <li className="hover:bg-[color:var(--color-violet-400)] py-2 px-2 transition-all">
               <Link href="/periodicTable">Periodic Table</Link>
             </li>
-            <li className="hover:hover:bg-[color:var(--color-violet-400)] py-2 px-2 transition-all">
+            <li className="hover:bg-[color:var(--color-violet-400)] py-2 px-2 transition-all">
               <Link href="/unitConverter">Unit converter</Link>
             </li>
-            <li className="hover:hover:bg-[color:var(--color-violet-400)] py-2 px-2 transition-all">
+            <li className="hover:bg-[color:var(--color-violet-400)] py-2 px-2 transition-all">
               <Link href="/equationBalancer">Equation Balancer</Link>
             </li>
-            <li>
+            <li className="mt-1">
               <ToggleDarkMode />
             </li>
-            <li className="hover:hover:bg-[color:var(--color-violet-400)] py-2 px-2 transition-all">
+            <li className="hover:bg-[color:var(--color-violet-400)] py-2 px-2 transition-all">
               <Link href="/account" className="flex gap-3 items-center">
                 <UserCircleIcon className="w-6 h-6" />
                 Account

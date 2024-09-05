@@ -58,10 +58,18 @@ function Search() {
   function handleChange(e) {
     const value = e.target.value;
     const normalizedValue = normalizeQuery(value);
+
     setQuery(value);
-    setSuggestions(
-      Object.keys(searchMappings).filter((key) => key.includes(normalizedValue))
-    );
+
+    if (value === "") {
+      setSuggestions([]);
+    } else {
+      setSuggestions(
+        Object.keys(searchMappings).filter((key) =>
+          key.includes(normalizedValue)
+        )
+      );
+    }
   }
 
   function handleSuggestionClick(suggestion) {
@@ -75,7 +83,7 @@ function Search() {
       <input
         type="text"
         placeholder="Search"
-        className="w-full text-center border border-violet-300"
+        className="w-full text-center border border-[color:var(--color-violet-300)]"
         value={query}
         onChange={handleChange}
         onKeyDown={(e) => e.key === "Enter" && handleSearch()}
@@ -83,13 +91,13 @@ function Search() {
       />
       {suggestions.length > 0 && (
         <ul
-          className="absolute left-0 right-0 bg-white border border-violet-300 mt-1"
+          className="absolute left-0 right-0 bg-white border border-[color:var(--color-violet-300)] mt-1"
           ref={suggestionsRef}
         >
           {suggestions.map((suggestion, index) => (
             <li
               key={index}
-              className="cursor-pointer p-2 hover:bg-violet-200"
+              className="cursor-pointer p-2 text-black hover:bg-[color:var(--color-violet-400)]"
               onClick={() => handleSuggestionClick(suggestion)}
             >
               {suggestion}

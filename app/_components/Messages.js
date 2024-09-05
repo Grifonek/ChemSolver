@@ -20,7 +20,7 @@ function Messages({ messages, replies, currentUserId }) {
   };
 
   return (
-    <div className="border border-red-500 w-full">
+    <div className="flex flex-col w-full space-y-10">
       {messages.map((message) => (
         <Message
           key={message.id}

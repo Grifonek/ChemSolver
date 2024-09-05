@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 import FavouriteMark from "../FavouriteMark";
 import { addToHistory } from "@/app/_lib/actions";
 
-function GeneralCalculator({ values, id, calculate }) {
+function GeneralCalculator({ values, id, calculate, desc }) {
   const [inputValues, setInputValues] = useState(values.map(() => ""));
   const [result, setResult] = useState("");
 
@@ -47,6 +47,8 @@ function GeneralCalculator({ values, id, calculate }) {
           <FavouriteMark id={id} values={values} />
         </div>
       </div>
+
+      <p>{desc ? desc : ""}</p>
 
       {values.map((label, index) => (
         <div key={index}>

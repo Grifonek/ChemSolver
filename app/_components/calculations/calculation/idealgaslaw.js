@@ -1,10 +1,8 @@
-const idealGasCalculate = ([P, V, n, R, T]) => {
-  if (P === null) return (n * R * T) / V;
-  if (V === null) return (n * R * T) / P;
-  if (n === null) return (P * V) / (R * T);
-  if (R === null) return (P * V) / (n * T);
-  if (T === null) return (P * V) / (n * R);
-  return null;
+const idealGasCalculate = ([P, V, n, T]) => {
+  if (P === null) return (n * 8.31446261815324 * T) / V;
+  if (V === null) return (n * 8.31446261815324 * T) / P;
+  if (n === null) return (P * V) / (8.31446261815324 * T);
+  if (T === null) return (P * V) / (n * 8.31446261815324);
 };
 
 export default idealGasCalculate;

@@ -13,8 +13,8 @@ function HistoryCalculation() {
     const fetch = async () => {
       const historyFetch = await getHistory();
 
-      if (historyFetch.length > 50) {
-        const over = historyFetch.slice(0, historyFetch.length - 50);
+      if (historyFetch.length > 25) {
+        const over = historyFetch.slice(0, historyFetch.length - 25);
 
         for (const item of over) {
           await deleteHistory(item.inputValues, item.result);

@@ -58,7 +58,7 @@ function ReplyMessage({ reply, currentUserId, userId }) {
   }, []);
 
   return (
-    <div className="flex flex-col items-center text-center border border-blue-500 m-4 space-y-4 py-3 relative">
+    <div className="flex flex-col items-center text-center  shadow-lg shadow-[color:var(--color-violet-300)] m-4 space-y-4 py-3 relative">
       {currentUserId === userId && (
         <div className="absolute top-2 right-6" ref={dropdownRef}>
           <Bars3Icon
@@ -95,7 +95,7 @@ function ReplyMessage({ reply, currentUserId, userId }) {
       <div className="flex items-center gap-x-8 pb-4">
         <img
           src={reply.userImg}
-          alt={`Image of user ${reply.userName}`}
+          // alt={`Image of user ${reply.userName}`}
           className="w-8 h-8 rounded-full"
         />
         <div>

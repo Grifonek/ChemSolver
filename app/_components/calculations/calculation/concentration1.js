@@ -1,4 +1,4 @@
-const concentration = ([c, m, M, V]) => {
+const concentration1 = ([c, m, M, V]) => {
   if (c === null) return m / (M * V);
   if (m === null) return c * M * V;
   if (M === null) return m / (c * V);
@@ -6,4 +6,4 @@ const concentration = ([c, m, M, V]) => {
   return null;
 };
 
-export default concentration;
+export default concentration1;
