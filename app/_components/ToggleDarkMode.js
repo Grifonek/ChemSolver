@@ -1,15 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { MoonIcon, SunIcon } from "@heroicons/react/24/outline";
+import { useEffect, useState } from "react";
 
 function ToggleDarkMode() {
   const [isDark, setIsDark] = useState();
-  // const [isDark, setIsDark] = useState(
-  //   window.matchMedia("(prefers-color-scheme: dark)").matches
-  // );
 
-  // Function to switch color scheme based on the state
   function switchColorScheme() {
     const newIsDark = !isDark;
     setIsDark(newIsDark);
@@ -19,7 +15,6 @@ function ToggleDarkMode() {
     }
   }
 
-  // Update the state based on system preference
   useEffect(() => {
     const prefersDarkScheme = window.matchMedia(
       "(prefers-color-scheme: dark)"
@@ -30,7 +25,6 @@ function ToggleDarkMode() {
       htmlElement.dataset.bsTheme = prefersDarkScheme ? "dark" : "light";
     }
 
-    // Add event listener for changes in system preference
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
     const handleChange = (e) => {
       setIsDark(e.matches);
@@ -40,7 +34,6 @@ function ToggleDarkMode() {
     };
     mediaQuery.addEventListener("change", handleChange);
 
-    // Cleanup the event listener on component unmount
     return () => {
       mediaQuery.removeEventListener("change", handleChange);
     };

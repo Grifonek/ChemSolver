@@ -2,6 +2,7 @@ import SignInButton from "../_components/SignInButton";
 
 export const metadata = {
   title: "Login",
+  description: "Sign in to unlock all the features of ChemSolver.",
 };
 
 export default function Page() {

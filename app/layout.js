@@ -1,7 +1,7 @@
 import Header from "@/app/_components/Header";
 
-import { Roboto_Mono } from "next/font/google";
 import "@/app/_styles/globals.css";
+import { Roboto_Mono } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 
 const roboto_mono = Roboto_Mono({ subsets: ["latin"] });

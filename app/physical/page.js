@@ -2,6 +2,7 @@ import PhysicalWrapper from "../_components/PhysicalWrapper";
 
 export const metadata = {
   title: "Physical chemistry",
+  description: "All calculations related to physical chemistry.",
 };
 
 export default function Page() {

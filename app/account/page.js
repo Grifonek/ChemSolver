@@ -1,7 +1,9 @@
+import Footer from "../_components/Footer";
 import { auth } from "../_lib/auth";
 
 export const metadata = {
   title: "Account",
+  description: "Your account on ChemSolve with all the features.",
 };
 
 export default async function Page() {
@@ -23,6 +25,7 @@ export default async function Page() {
           </h1>
         </div>
         <h2>Logged as: {session.user.email}</h2>
+        <Footer />
       </div>
     </>
   );

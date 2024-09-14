@@ -12,7 +12,6 @@ function FavouriteCalculation() {
   useEffect(() => {
     const fetchBookMarks = async () => {
       const bookmarks = await getBookMarked();
-      console.log(bookmarks);
 
       if (!bookmarks) return;
 
@@ -28,15 +27,12 @@ function FavouriteCalculation() {
       const functions = {};
 
       for (const item of bookmarked) {
-        console.log("item name " + item.name.replaceAll("-", ""));
         const x = await import(
           `./calculations/calculation/${item.name.replaceAll("-", "")}`
         );
-        console.log("imported " + x);
         functions[item.name.replaceAll("-", "")] = x.default;
       }
       setCalculations(functions);
-      console.log("state calc " + calculations);
     };
 
     if (bookmarked.length) {

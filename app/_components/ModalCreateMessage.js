@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { createMessage } from "../_lib/actions";
 import toast from "react-hot-toast";
+import { createMessage } from "../_lib/actions";
 
 function ModalCreateMessage({ onNewMessage, isOpen, onClose }) {
   const [heading, setHeading] = useState("");

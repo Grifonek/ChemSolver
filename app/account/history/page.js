@@ -3,6 +3,7 @@ import HistoryCalculation from "@/app/_components/HistoryCalculation";
 
 export const metadata = {
   title: "History",
+  description: "History of all calculations you have done on ChemSolver.",
 };
 
 export default async function Page() {

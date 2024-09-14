@@ -2,8 +2,8 @@
 
 import { ClipboardIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { useEffect, useState } from "react";
-import { deleteHistory, getHistory } from "../_lib/actions";
 import toast from "react-hot-toast";
+import { deleteHistory, getHistory } from "../_lib/actions";
 
 function HistoryCalculation() {
   const [history, setHistory] = useState([]);

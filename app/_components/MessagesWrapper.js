@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import CreateMessageButton from "@/app/_components/CreateMessageButton";
 import Messages from "@/app/_components/Messages";
 import {
@@ -8,6 +7,7 @@ import {
   ChevronUpIcon,
   FunnelIcon,
 } from "@heroicons/react/24/outline";
+import { useEffect, useRef, useState } from "react";
 import FilterMenu from "./FilterMenu";
 
 export default function MessagesWrapper({ messages, replies, currentUserId }) {

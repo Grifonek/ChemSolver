@@ -1,7 +1,7 @@
-import Link from "next/link";
 import { UserCircleIcon } from "@heroicons/react/24/outline";
-import ToggleDarkMode from "./ToggleDarkMode";
+import Link from "next/link";
 import Logo from "./Logo";
+import ToggleDarkMode from "./ToggleDarkMode";
 
 function Header() {
   return (

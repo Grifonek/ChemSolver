@@ -103,10 +103,10 @@ function PeriodicModalWindow({ element, onModalClose }) {
             <span className="font-bold">Protons: </span>
             {element.atomicNumber}
           </p>
-          <p>
+          {/* <p>
             <span className="font-bold">Neutrons: </span>
             {element.massNumber - element.atomicNumber}
-          </p>
+          </p> */}
           <p>
             <span className="font-bold">Valence electrons: </span>
             {element.period}
@@ -144,22 +144,22 @@ function PeriodicModalWindow({ element, onModalClose }) {
             <span className="font-bold">Magnetic type: </span>
             {element.magneticType}
           </p>
-          <p>
+          {/* <p>
             <span className="font-bold">Electrical type: </span>
             {element.electricalType}
-          </p>
+          </p> */}
           <p>
             <span className="font-bold">Electrical conductivity: </span>
             {element.electricalConductivity} MS/m
           </p>
           <p>
             <span className="font-bold">Resistivity: </span>
-            {element.resistivity}
+            {element.resistivity} nΩ⋅m
           </p>
-          <p>
+          {/* <p>
             <span className="font-bold">Superconducting point: </span>
             {element.superconductingPoint}
-          </p>
+          </p> */}
           <h2 className="text-xl uppercase font-semibold">Abundance</h2>
           <p>
             <span className="font-bold">Universe: </span>
@@ -202,10 +202,10 @@ function PeriodicModalWindow({ element, onModalClose }) {
             <span className="font-bold">CAS number: </span>
             {element.CAS}
           </p>
-          <p>
+          {/* <p>
             <span className="font-bold">Description: </span>
             {element.description}
-          </p>
+          </p> */}
         </div>
       </div>
     </div>

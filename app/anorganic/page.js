@@ -2,6 +2,7 @@ import AnorganicWrapper from "../_components/AnorganicWrapper";
 
 export const metadata = {
   title: "Anorganic chemistry",
+  description: "All calculations related to anorganic chemistry.",
 };
 
 export default function Page() {

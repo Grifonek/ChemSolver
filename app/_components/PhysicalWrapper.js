@@ -2,9 +2,9 @@
 
 import GeneralCalculator from "./calculations/GeneralCalculator";
 
-import idealgaslaw from "./calculations/calculation/idealgaslaw";
 import energy1 from "./calculations/calculation/energyofphoton1";
 import energy2 from "./calculations/calculation/energyofphoton2";
+import idealgaslaw from "./calculations/calculation/idealgaslaw";
 import wavelength from "./calculations/calculation/wavelength";
 
 function PhysicalWrapper() {

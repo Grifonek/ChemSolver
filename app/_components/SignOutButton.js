@@ -1,8 +1,8 @@
 "use client";
 
 import { ArrowLeftStartOnRectangleIcon } from "@heroicons/react/24/outline";
-import { signOutAction } from "../_lib/actions";
 import { useState } from "react";
+import { signOutAction } from "../_lib/actions";
 import ModalConfirm from "./ModalConfirm";
 
 function SignOutButton() {

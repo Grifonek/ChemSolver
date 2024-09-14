@@ -23,11 +23,6 @@ export async function addBookMark(id, values) {
     .eq("userId", session.user.guestId)
     .single();
 
-  // if (existingError) {
-  //   console.error(existingError);
-  //   throw new Error("Error checking existing bookmark");
-  // }
-
   if (existingData) {
     alert("Bookmark already exist");
     return;
@@ -66,8 +61,6 @@ export async function isBookMarked(id) {
   const session = await auth();
   if (!session) return;
 
-  // throw new Error("You must be logged in");
-
   const { data, error } = await supabase
     .from("favourite")
     .select("isBookmarked")
@@ -102,7 +95,6 @@ export async function getBookMarked() {
 export async function addToHistory(id, values, inputValues, result) {
   const session = await auth();
   if (!session) return;
-  // if (!session) throw new Error("You must be logged in");
 
   const { data, error } = await supabase
     .from("history")
@@ -142,25 +134,6 @@ export async function getHistory() {
 
   return data;
 }
-
-// export async function deleteHistory(inputValues, result) {
-//   const session = await auth();
-//   if (!session) throw new Error("You must be logged in");
-
-//   console.log(inputValues, result);
-
-//   const { error } = await supabase
-//     .from("history")
-//     .delete()
-//     .eq("inputValues", inputValues)
-//     .eq("result", result)
-//     .eq("userId", session.user.guestId);
-
-//   if (error) {
-//     console.error(error);
-//     throw new Error("Could not delete from history");
-//   }
-// }
 
 export async function deleteHistory(inputValues, result) {
   const session = await auth();
@@ -220,12 +193,9 @@ export async function deleteOldHistory() {
 }
 
 // get all messages
-
 export async function getMessages() {
   const session = await auth();
   if (!session) throw new Error("You must be logged in");
-
-  // const { name, email, image } = session.user;
 
   const { data, error } = await supabase.from("messages").select("*");
 
@@ -238,7 +208,6 @@ export async function getMessages() {
 }
 
 // create message
-
 export async function createMessage(heading, text) {
   const session = await auth();
   if (!session) throw new Error("You must be logged in");
@@ -348,7 +317,6 @@ export async function createReply(idOfMessage, text) {
 }
 
 // get replies
-
 export async function getReplies() {
   const session = await auth();
   if (!session) throw new Error("You must be logged in");
@@ -364,7 +332,6 @@ export async function getReplies() {
 }
 
 // give like
-
 export async function addLike(messageId) {
   const session = await auth();
   if (!session) throw new Error("You must be logged in");
@@ -396,7 +363,7 @@ export async function addLike(messageId) {
 
   const { data: updatedMessage, error: updateError } = await supabase
     .from("messages")
-    .update({ likes: updatedLikes }) // increment likes
+    .update({ likes: updatedLikes })
     .eq("id", messageId)
     .select();
 

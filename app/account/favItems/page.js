@@ -2,6 +2,8 @@ import FavouriteCalculation from "@/app/_components/FavouriteCalculation";
 
 export const metadata = {
   title: "Favourite items",
+  description:
+    "All bookmarked calculations on one place to get faster results.",
 };
 
 export default function Page() {

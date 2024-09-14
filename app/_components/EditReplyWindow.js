@@ -20,7 +20,6 @@ function EditReplyWindow({ newText, setNewText, handleUpdate, setIsEditOpen }) {
           </button>
           <button
             onClick={handleUpdate}
-            // disabled={}
             className="bg-[color:var(--color-green-300)] hover:bg-[color:var(--color-green-400)] px-4 py-2 rounded-lg transition-all"
           >
             Edit

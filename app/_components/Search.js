@@ -1,9 +1,9 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState, useEffect, useRef } from "react";
-import { searchMappings } from "../_lib/searchMappings";
+import { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
+import { searchMappings } from "../_lib/searchMappings";
 
 function normalizeQuery(query) {
   return query.trim().toLowerCase().replace(/\s+/g, " ");

@@ -1,13 +1,13 @@
+import { Bars3Icon, HeartIcon } from "@heroicons/react/24/outline";
 import { useEffect, useRef, useState } from "react";
+import toast from "react-hot-toast";
 import { addLike, deleteMessage, updateMessage } from "../_lib/actions";
 import DeleteMessage from "./DeleteMessage";
 import EditMessage from "./EditMessage";
-import ReplyButton from "./ReplyButton";
-import ReplyMessage from "./ReplyMessage";
-import { HeartIcon, Bars3Icon } from "@heroicons/react/24/outline";
-import toast from "react-hot-toast";
 import EditWindow from "./EditWindow";
 import ModalConfirm from "./ModalConfirm";
+import ReplyButton from "./ReplyButton";
+import ReplyMessage from "./ReplyMessage";
 
 function Message({
   id,
@@ -136,6 +136,9 @@ function Message({
             <HeartIcon className="h-6 w-6" />
             <span>{likeNum}</span>
           </button>
+          <p className="text-[color:var(--color-red)]">
+            {userId === 12 ? "OWNER" : ""}
+          </p>
         </div>
       </div>
       <h2 className="text-lg uppercase font-bold">{heading}</h2>

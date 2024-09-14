@@ -1,11 +1,11 @@
+import { Bars3Icon } from "@heroicons/react/24/outline";
 import { useEffect, useRef, useState } from "react";
+import toast from "react-hot-toast";
+import { deleteReply, updateReply } from "../_lib/actions";
 import DeleteReply from "./DeleteReply";
 import EditReply from "./EditReply";
 import EditReplyWindow from "./EditReplyWindow";
-import { deleteReply, updateReply } from "../_lib/actions";
-import toast from "react-hot-toast";
 import ModalConfirm from "./ModalConfirm";
-import { Bars3Icon } from "@heroicons/react/24/outline";
 
 function ReplyMessage({ reply, currentUserId, userId }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -102,6 +102,9 @@ function ReplyMessage({ reply, currentUserId, userId }) {
           <h2 className="font-bold">{reply.userName}</h2>
           <p className="text-sm text-gray-500">{reply.userEmail}</p>
         </div>
+        <p className="text-[color:var(--color-red)]">
+          {userId === 12 ? "OWNER" : ""}
+        </p>
       </div>
       <p className="w-fit max-w-prose px-4 break-words">{reply.text}</p>
     </div>

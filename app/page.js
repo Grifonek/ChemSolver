@@ -1,5 +1,7 @@
 import Link from "next/link";
+import Footer from "./_components/Footer";
 import Search from "./_components/Search";
+import DevelopmentNotification from "./_components/DevelopmentNotification";
 
 export default function Page() {
   return (
@@ -18,6 +20,8 @@ export default function Page() {
         >
           Go to your account
         </Link>
+        <DevelopmentNotification />
+        <Footer />
       </div>
     </main>
   );

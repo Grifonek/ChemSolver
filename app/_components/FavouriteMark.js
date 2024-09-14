@@ -1,6 +1,6 @@
 import { BookmarkIcon } from "@heroicons/react/24/outline";
 import { BookmarkIcon as BlackIcon } from "@heroicons/react/24/solid";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { addBookMark, deleteBookMark, isBookMarked } from "../_lib/actions";
 import SpinnerMini from "./SpinnerMini";
@@ -29,7 +29,6 @@ function FavouriteMark({ id, values }) {
   const handleBookmark = async () => {
     if (isBookmarked) {
       try {
-        console.log("deleting bookmark");
         await deleteBookMark(id);
         setIsBookmarked(false);
         toast.success("Removed from bookmarks!");
@@ -38,7 +37,6 @@ function FavouriteMark({ id, values }) {
         console.error("Error deleting bookmark:", error);
       }
     } else {
-      console.log("adding bookmark");
       try {
         await toast.promise(addBookMark(id, values), {
           loading: "Adding bookmark...",

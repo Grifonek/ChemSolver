@@ -1,9 +1,9 @@
-import Link from "next/link";
 import {
-  BookmarkIcon,
   ArrowPathIcon,
+  BookmarkIcon,
   ChatBubbleLeftRightIcon,
 } from "@heroicons/react/24/outline";
+import Link from "next/link";
 import SignOutButton from "./SignOutButton";
 
 function SideNavigation() {
