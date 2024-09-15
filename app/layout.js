@@ -12,9 +12,34 @@ export const metadata = {
     default: "Welcome | ChemSolver",
   },
   icons: {
-    icon: "/logo.png",
+    logo: "/logo.png",
   },
   description: "Your online tool to help you with chemistry.",
+  applicationName: "ChemSolver",
+  authors: [
+    {
+      name: "Max Demel",
+      url: "https://grifonekio.site/",
+    },
+    {
+      name: "Max Demel",
+      url: "https://github.com/Grifonek",
+    },
+  ],
+  keywords: [
+    "ChemSolver",
+    "chemistry",
+    "chemical calculations",
+    "periodic table",
+    "unit converter",
+    "equation balancer",
+    "anorganic chemistry",
+    "physical chemistry",
+  ],
+  robots: {
+    index: "true",
+    follow: "true",
+  },
 };
 
 export default function RootLayout({ children }) {

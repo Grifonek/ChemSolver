@@ -10,7 +10,7 @@ function PeriodicSelector({ filter, onFilterChange }) {
   }
 
   return (
-    <div className="grid grid-cols-4 gap-x-3 gap-y-1">
+    <div className="grid grid-cols-4 md:gap-x-3 gap-y-1 max-md:text-sm">
       <div>
         <label>
           <input
@@ -19,7 +19,7 @@ function PeriodicSelector({ filter, onFilterChange }) {
             value="nonmetal"
             checked={selectedFilter === "nonmetal"}
             onChange={() => handleFilterChange("nonmetal")}
-            className="mr-2"
+            className="mr-0.5 md:mr-2"
           />
           Nonmetals
         </label>
@@ -32,7 +32,7 @@ function PeriodicSelector({ filter, onFilterChange }) {
             value="halogen"
             checked={selectedFilter === "halogen"}
             onChange={() => handleFilterChange("halogen")}
-            className="mr-2"
+            className="mr-0.5 md:mr-2"
           />
           Halogens
         </label>
@@ -45,7 +45,7 @@ function PeriodicSelector({ filter, onFilterChange }) {
             value="noble gas"
             checked={selectedFilter === "noble gas"}
             onChange={() => handleFilterChange("noble gas")}
-            className="mr-2"
+            className="mr-0.5 md:mr-2"
           />
           Noble gases
         </label>
@@ -58,7 +58,7 @@ function PeriodicSelector({ filter, onFilterChange }) {
             value="alkali metal"
             checked={selectedFilter === "alkali metal"}
             onChange={() => handleFilterChange("alkali metal")}
-            className="mr-2"
+            className="mr-0.5 md:mr-2"
           />
           Alkali metals
         </label>
@@ -71,7 +71,7 @@ function PeriodicSelector({ filter, onFilterChange }) {
             value="alkaline earth metal"
             checked={selectedFilter === "alkaline earth metal"}
             onChange={() => handleFilterChange("alkaline earth metal")}
-            className="mr-2"
+            className="mr-0.5 md:mr-2"
           />
           Alkaline earth metals
         </label>
@@ -84,7 +84,7 @@ function PeriodicSelector({ filter, onFilterChange }) {
             value="post-transition metal"
             checked={selectedFilter === "post-transition metal"}
             onChange={() => handleFilterChange("post-transition metal")}
-            className="mr-2"
+            className="mr-0.5 md:mr-2"
           />
           Post transition metals
         </label>
@@ -97,7 +97,7 @@ function PeriodicSelector({ filter, onFilterChange }) {
             value="metalloid"
             checked={selectedFilter === "metalloid"}
             onChange={() => handleFilterChange("metalloid")}
-            className="mr-2"
+            className="mr-0.5 md:mr-2"
           />
           Metaloids
         </label>
@@ -110,7 +110,7 @@ function PeriodicSelector({ filter, onFilterChange }) {
             value="transition metal"
             checked={selectedFilter === "transition metal"}
             onChange={() => handleFilterChange("transition metal")}
-            className="mr-2"
+            className="mr-0.5 md:mr-2"
           />
           Transition metals
         </label>
@@ -123,7 +123,7 @@ function PeriodicSelector({ filter, onFilterChange }) {
             value="lanthanide"
             checked={selectedFilter === "lanthanide"}
             onChange={() => handleFilterChange("lanthanide")}
-            className="mr-2"
+            className="mr-0.5 md:mr-2"
           />
           Lanthanides
         </label>
@@ -136,7 +136,7 @@ function PeriodicSelector({ filter, onFilterChange }) {
             value="actinide"
             checked={selectedFilter === "actinide"}
             onChange={() => handleFilterChange("actinide")}
-            className="mr-2"
+            className="mr-0.5 md:mr-2"
           />
           Actinides
         </label>

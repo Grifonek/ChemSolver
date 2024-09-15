@@ -60,13 +60,13 @@ export default function MessagesWrapper({ messages, replies, currentUserId }) {
   }
 
   return (
-    <div className="flex flex-col items-center py-10 px-5 gap-y-5">
-      <h1 className="text-2xl">Discussion</h1>
-      <h3>
+    <div className="flex flex-col items-center py-5 xl:py-10 gap-y-5 xl:gap-y-10">
+      <h1 className="text-xl xl:text-2xl">Discussion</h1>
+      <h2 className="flex text-center">
         Do you have any ideas on improving the app, do you miss anything or want
         to take a part in the development of ChemSolver?
-      </h3>
-      <h3>Let us know in the discussion!</h3>
+      </h2>
+      <h2>Let us know in the discussion!</h2>
 
       <div className="w-full flex justify-between items-center">
         <CreateMessageButton onNewMessage={handleNewMessage} />

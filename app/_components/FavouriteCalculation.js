@@ -47,7 +47,7 @@ function FavouriteCalculation() {
   return (
     <div>
       {bookmarked.length !== 0 ? (
-        <div className="grid grid-cols-2 gap-x-20">
+        <div className="grid md:grid-cols-2 gap-x-20 gap-y-5">
           {bookmarked.map((item) => (
             <div key={item.id}>
               <GeneralCalculator

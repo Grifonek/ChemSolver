@@ -8,9 +8,9 @@ import SignOutButton from "./SignOutButton";
 
 function SideNavigation() {
   return (
-    <nav className="flex flex-col items-center">
-      <ul className="flex flex-col gap-6 mt-24">
-        <li className="hover:bg-violet-400 transition-all font-semibold border-r border-r-violet-300">
+    <nav className="flex flex-col items-center text-center max-md:justify-center">
+      <ul className="flex flex-col md:gap-6 mt-2 lg:mt-24">
+        <li className="hover:bg-violet-400 transition-all font-semibold max-lg:border-b lg:border-r border-violet-300">
           <Link
             href="/account/favItems"
             className="flex items-center gap-4 py-6 px-5 h-full w-full"
@@ -19,7 +19,7 @@ function SideNavigation() {
             Favourite items
           </Link>
         </li>
-        <li className="hover:bg-violet-400 transition-all font-semibold border-r border-r-violet-300">
+        <li className="hover:bg-violet-400 transition-all font-semibold max-lg:border-b lg:border-r border-violet-300">
           <Link
             href="/account/history"
             className="flex items-center gap-4 py-6 px-5 h-full w-full"
@@ -28,7 +28,7 @@ function SideNavigation() {
             History
           </Link>
         </li>
-        <li className="hover:bg-violet-400 transition-all font-semibold border-r border-r-violet-300">
+        <li className="hover:bg-violet-400 transition-all font-semibold max-lg:border-b lg:border-r border-violet-300">
           <Link
             href="/account/discussion"
             className="flex items-center gap-4 py-6 px-5 h-full w-full"
@@ -37,7 +37,7 @@ function SideNavigation() {
             Discussion
           </Link>
         </li>
-        <li className="hover:bg-violet-400 transition-all font-semibold border-r border-r-violet-300">
+        <li className="hover:bg-violet-400 transition-all font-semibold max-lg:border-b lg:border-r border-violet-300">
           <SignOutButton />
         </li>
       </ul>

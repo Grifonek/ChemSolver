@@ -34,12 +34,12 @@ function PeriodicModalWindow({ element, onModalClose }) {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div
-        className="bg-[color:var(--color-violet-300)] rounded-lg p-6 space-y-4 h-2/3 w-1/3 overflow-y-scroll"
+        className="bg-[color:var(--color-violet-300)] rounded-lg p-6 space-y-4 overflow-y-scroll w-4/5 h-5/6 md:w-2/3 md:h-3/4 lg:w-1/3 lg:h-2/3"
         ref={modalRef}
       >
         <div className="space-y-4">
           <h1
-            className={`text-2xl font-bold flex justify-between items-center gap-x-3 p-2 rounded-lg`}
+            className={`text-xl sm:text-2xl font-bold flex justify-between items-center gap-x-3 p-2 rounded-lg`}
             style={{
               backgroundColor: element.borderColor
                 ? element.borderColor
@@ -47,14 +47,17 @@ function PeriodicModalWindow({ element, onModalClose }) {
             }}
           >
             <div className="flex items-center gap-x-3">
-              <BeakerIcon className="size-6" />
-              {element.name} <span className="text-lg">({element.symbol})</span>
+              <BeakerIcon className="w-6 h-6" />
+              {element.name}{" "}
+              <span className="text-lg sm:text-xl">({element.symbol})</span>
             </div>
             <button onClick={onModalClose}>
-              <XMarkIcon className="size-6" />
+              <XMarkIcon className="w-6 h-6" />
             </button>
           </h1>
-          <h2 className="text-xl uppercase font-semibold">Atomic properties</h2>
+          <h2 className="text-lg sm:text-xl uppercase font-semibold">
+            Atomic properties
+          </h2>
           <p>
             <span className="font-bold">Atomic number: </span>
             {element.atomicNumber}
@@ -76,7 +79,7 @@ function PeriodicModalWindow({ element, onModalClose }) {
             {element.state}
           </p>
           <p>
-            <span className="font-bold">Crystal sctructure: </span>
+            <span className="font-bold">Crystal structure: </span>
             {element.crystalStructure}
           </p>
           <p>
@@ -103,10 +106,6 @@ function PeriodicModalWindow({ element, onModalClose }) {
             <span className="font-bold">Protons: </span>
             {element.atomicNumber}
           </p>
-          {/* <p>
-            <span className="font-bold">Neutrons: </span>
-            {element.massNumber - element.atomicNumber}
-          </p> */}
           <p>
             <span className="font-bold">Valence electrons: </span>
             {element.period}
@@ -133,7 +132,7 @@ function PeriodicModalWindow({ element, onModalClose }) {
               }}
             />
           </p>
-          <h2 className="text-xl uppercase font-semibold">
+          <h2 className="text-lg sm:text-xl uppercase font-semibold">
             Electron properties
           </h2>
           <p>
@@ -144,10 +143,6 @@ function PeriodicModalWindow({ element, onModalClose }) {
             <span className="font-bold">Magnetic type: </span>
             {element.magneticType}
           </p>
-          {/* <p>
-            <span className="font-bold">Electrical type: </span>
-            {element.electricalType}
-          </p> */}
           <p>
             <span className="font-bold">Electrical conductivity: </span>
             {element.electricalConductivity} MS/m
@@ -156,11 +151,9 @@ function PeriodicModalWindow({ element, onModalClose }) {
             <span className="font-bold">Resistivity: </span>
             {element.resistivity} nΩ⋅m
           </p>
-          {/* <p>
-            <span className="font-bold">Superconducting point: </span>
-            {element.superconductingPoint}
-          </p> */}
-          <h2 className="text-xl uppercase font-semibold">Abundance</h2>
+          <h2 className="text-lg sm:text-xl uppercase font-semibold">
+            Abundance
+          </h2>
           <p>
             <span className="font-bold">Universe: </span>
             {element.universe}%
@@ -181,7 +174,9 @@ function PeriodicModalWindow({ element, onModalClose }) {
             <span className="font-bold">Human body: </span>
             {element.humanBody}%
           </p>
-          <h2 className="text-xl uppercase font-semibold">Overview</h2>
+          <h2 className="text-lg sm:text-xl uppercase font-semibold">
+            Overview
+          </h2>
           <p>
             <span className="font-bold">Latin name: </span>
             {element.latinName}
@@ -202,10 +197,6 @@ function PeriodicModalWindow({ element, onModalClose }) {
             <span className="font-bold">CAS number: </span>
             {element.CAS}
           </p>
-          {/* <p>
-            <span className="font-bold">Description: </span>
-            {element.description}
-          </p> */}
         </div>
       </div>
     </div>

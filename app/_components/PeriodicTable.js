@@ -11,8 +11,9 @@ function PeriodicTable({ elements, filter, selectorComponent }) {
 
   return (
     <>
-      <div className="w-full overflow-x-auto">
-        <div className="grid grid-cols-[repeat(18,minmax(40px,1fr))] gap-2 p-4">
+      <div className="w-full overflow-x-scroll">
+        {/* <div className="grid grid-cols-[repeat(18,minmax(40px,1fr))] gap-2 p-4"> */}
+        <div className="grid grid-cols-[repeat(18,minmax(60px,1fr))] gap-2 p-4 lg:grid-cols-[repeat(18,minmax(40px,1fr))] ">
           {elements.map((element) => (
             <button
               key={element.symbol}
@@ -32,7 +33,9 @@ function PeriodicTable({ elements, filter, selectorComponent }) {
                 setIsModalOpen(true);
               }}
             >
-              <span className="text-lg font-bold">{element.symbol}</span>
+              <span className="text-sm lg:text-lg font-bold">
+                {element.symbol}
+              </span>
               <span
                 className="text-xs overflow-hidden whitespace-nowrap text-ellipsis max-w-full"
                 style={{ maxWidth: "100%" }}

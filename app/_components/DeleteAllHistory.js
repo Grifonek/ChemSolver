@@ -18,7 +18,7 @@ function DeleteAllHistory() {
   return (
     <button
       onClick={() => handleDeleteAllHistory()}
-      className="bg-[color:var(--color-violet-300)] px-6 py-4 font-semibold hover:bg-[color:var(--color-violet-400)] transition-all"
+      className="bg-[color:var(--color-violet-300)] px-3 py-2 xl:px-6 xl:py-4 font-semibold text-sm md:text-base xl:text-lg hover:bg-[color:var(--color-violet-400)] transition-all"
     >
       Delete complete history
     </button>

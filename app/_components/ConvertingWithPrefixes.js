@@ -47,12 +47,14 @@ function ConvertingWithPrefixes() {
   }, [inputValue, inputPrefix, outputPrefix]);
 
   return (
-    <div className="space-y-4">
-      <h1>For converting between same unit (kg, m, etc.)</h1>
-      <div className="flex items-center space-x-4">
+    <div className="flex flex-col text-center space-y-4">
+      <h1 className="text-sm md:text-base">
+        For converting between same unit (kg, m, etc.)
+      </h1>
+      <div className="flex items-center max-lg:flex-col space-x-4">
         <div className="space-x-4">
           <input
-            className="border border-[color:var(--color-violet-300)]"
+            className="border border-[color:var(--color-violet-300)] max-md:w-36"
             type="text"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
@@ -74,7 +76,7 @@ function ConvertingWithPrefixes() {
         <EqualsIcon className="size-6" />
         <div className="flex items-center space-x-4">
           <input
-            className="border border-[color:var(--color-violet-300)]"
+            className="border border-[color:var(--color-violet-300)] max-md:w-36"
             type="text"
             value={inputValue !== "" ? outputValue : ""}
             readOnly

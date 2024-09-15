@@ -14,7 +14,7 @@ import volumeconcentration from "./calculations/calculation/volumeconcentration"
 
 function AnorganicWrapper() {
   return (
-    <div className="space-y-5 w-3/5">
+    <div className="space-y-5 w-4/5 lg:w-3/5 max-lg:mb-14">
       <GeneralCalculator
         values={[
           "Concentration (c) - [mol/l]",

@@ -86,7 +86,7 @@ function Message({
   }, []);
 
   return (
-    <div className="relative flex flex-col items-center border-b border-[color:var(--color-gray-400)] m-4 space-y-4 py-3">
+    <div className="relative flex flex-col items-center border-b border-[color:var(--color-gray-400)] md:m-4 space-y-4 py-3 w-full md:w-11/12 overflow-hidden">
       {currentUserId === userId && (
         <div className="absolute top-2 right-6" ref={dropdownRef}>
           <Bars3Icon
@@ -94,7 +94,7 @@ function Message({
             className="p-2 cursor-pointer"
           />
           {isDropdownOpen && (
-            <div className="absolute right-0 border rounded-lg shadow-lg z-50 px-2 py-1 space-y-2">
+            <div className="absolute right-0 border bg-[color:var(--color-violet-400)] rounded-lg shadow-lg z-50 px-2 py-1 space-y-2">
               <EditMessage setIsOpen={setIsOpen} />
               <DeleteMessage setIsModalOpen={setIsModalOpen} />
               {isOpen && (
@@ -121,17 +121,16 @@ function Message({
         />
       )}
 
-      <div className="flex gap-x-8 items-center pb-4">
+      <div className="flex gap-x-8 items-center md:pb-4">
         <img
           src={userImg}
-          // src={userImg ? userImg : ""}
-          // alt="user"
+          alt={userName}
           referrerPolicy="no-referrer"
           className="w-10 h-10 rounded-full"
         />
-        <div className="flex items-center gap-x-4">
-          <p className="font-bold">{userName}:</p>
-          <h2 className="text-gray-500">{userEmail}</h2>
+        <div className="flex max-md:flex-col items-center gap-x-4 w-full">
+          <p className="text-sm md:text-base font-bold">{userName}:</p>
+          <p className="text-sm md:text-base text-gray-500">{userEmail}</p>
           <button onClick={handleLikes} className="flex items-center gap-1">
             <HeartIcon className="h-6 w-6" />
             <span>{likeNum}</span>
@@ -141,10 +140,21 @@ function Message({
           </p>
         </div>
       </div>
-      <h2 className="text-lg uppercase font-bold">{heading}</h2>
-      <p>{text}</p>
 
-      <ReplyButton id={id} userName={userName} onReply={onReply} />
+      {/* Ensuring the heading and text don't overlap */}
+      <h2 className="text-base md:text-lg uppercase font-bold w-full break-words text-center">
+        {heading}
+      </h2>
+      <p className="text-sm md:text-base w-full break-words text-center">
+        {text}
+      </p>
+
+      <ReplyButton
+        id={id}
+        userName={userName}
+        onReply={onReply}
+        className="text-sm md:text-base xl:text-lg"
+      />
 
       <div className="mt-4 space-y-4 w-full">
         {replies.map((reply) => (

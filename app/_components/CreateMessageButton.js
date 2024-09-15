@@ -17,7 +17,7 @@ function CreateMessageButton({ onNewMessage }) {
   return (
     <>
       <button
-        className="bg-[color:var(--color-violet-300)] px-2 py-2 font-semibold hover:bg-[color:var(--color-violet-400)] transition-all w-36 flex gap-x-3 items-center"
+        className="bg-[color:var(--color-violet-300)] px-2 py-2 font-semibold hover:bg-[color:var(--color-violet-400)] transition-all w-36 flex gap-x-3 items-center text-sm md:text-base justify-center"
         onClick={handleOpenModal}
       >
         <span>+</span>New message

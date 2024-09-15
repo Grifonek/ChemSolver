@@ -37,7 +37,7 @@ function GeneralCalculator({ values, id, calculate, desc }) {
   return (
     <div
       id={id}
-      className="flex flex-col gap-y-2 text-center border border-[color:var(--color-violet-300)] px-8 py-4 w-full max-w-lg mx-auto"
+      className="flex flex-col gap-y-2 text-center border border-[color:var(--color-violet-300)] px-3 lg:px-8 py-4 w-full max-w-lg mx-auto"
     >
       <div className="flex justify-between items-center mb-2">
         <h2 className="uppercase text-lg flex-grow text-center">
